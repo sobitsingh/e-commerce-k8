@@ -4,3 +4,8 @@
 
 # Ignore Terraform provider binaries and cache
 .terraform/
+./eks/backend/.terraform.lock.hcl
+./eks/backend/.terraform/
+./eks/backend/terraform.tfstate
+./eks/backend/terraform.tfstate.backup
+./eks/backend/bastian-key.pem
