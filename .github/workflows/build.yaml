@@ -33,7 +33,7 @@ jobs:
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Run golangci-lint # check for unused variables and outdated packages new
         run: |
-          golangci-lint run ./ultimate-devops-project-demo/src/product-catalog/... --timeout 5m
+          cd ./ultimate-devops-project-demo/src/product-catalog && golangci-lint run ./... --timeout 5m
   docker-build:
       runs-on: ubuntu-latest
       needs: [build, code-quality]
