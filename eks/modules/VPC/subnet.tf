@@ -27,6 +27,8 @@ resource "aws_subnet" "public" {
   availability_zone       = var.availability_zone_public[count.index]
   tags = {
     Name = "open-tele-public-subnet-${count.index + 1}"
+    kubernetes.io/cluster/open-tele-eks = "shared" # Tag for EKS cluster
+    "kubernetes.io/role/internal-elb" = 1 # Tag for internal load balancer
   }
 }
 

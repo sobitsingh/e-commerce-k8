@@ -3,6 +3,7 @@ sudo apt-get update -y
 sudo apt-get install -y docker.io
 sudo systemctl start docker
 sudo usermod -aG docker ubuntu
+
 docker --version
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
@@ -33,7 +34,7 @@ sudo apt-get install -y cloud-guest-utils
 
 # Install git
 sudo apt-get install -y git
-git clone https://github.com/sobitsingh/ultimate-devops-project-demo.git
+git clone https://github.com/sobitsingh/e-commerce-k8.git
 
 # Install aws-cli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"

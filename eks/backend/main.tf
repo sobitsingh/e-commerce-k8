@@ -111,7 +111,8 @@ resource "aws_instance" "bastian-host" {
   key_name = var.key-name
 
   #run user_data.sh from filepath
-  user_data = file("user_data.sh")
+  user_data = file("${path.module}/user_data.sh")
+  user_data_replace_on_change = true
   tags = {
     Name        = "Bastion Host"
     Environment = var.environment-name[0]
