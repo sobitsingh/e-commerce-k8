@@ -1,4 +1,4 @@
-name: product-catalog-new
+name: product-catalog
 on:
   pull_request:
     branches:
@@ -27,7 +27,7 @@ jobs:
       steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run golangci-lint # check for unused variables and outdated packages 
+      - name: Run golangci-lint # check for unused variables and outdated packages
         run: |
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
           golangci-lint run ./src/product-catalog/... --timeout 5- m
@@ -70,3 +70,4 @@ jobs:
           git commit -m "update image to [CI] ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
           git push
 
+          
