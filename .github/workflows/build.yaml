@@ -1,4 +1,4 @@
-name: product-catalog
+name: product-catalog-new
 on:
   pull_request:
     branches:
@@ -70,4 +70,3 @@ jobs:
           git commit -m "update image to [CI] ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
           git push
 
-          
