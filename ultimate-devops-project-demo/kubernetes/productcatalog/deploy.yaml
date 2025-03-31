@@ -1,5 +1,5 @@
 ---
-# Source: opentelemetry-demo/templates/component.yaml new file-1
+# Source: opentelemetry-demo/templates/component.yaml new file-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
