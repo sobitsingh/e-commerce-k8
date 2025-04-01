@@ -73,5 +73,7 @@ jobs:
           git add ./ultimate-devops-project-demo/kubernetes/productcatalog/deploy.yaml
           git commit -m "update image to [CI] ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
           git push origin HEAD:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
           
