@@ -62,13 +62,12 @@ jobs:
       - name: Update k8s manifests
         run: |
           sed -i "s|image:.*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}|g" ./ultimate-devops-project-demo/kubernetes/productcatalog/deploy.yaml
-      - name: commit and push changes
-        with:
-          token: ${{ secrets.TOKEN }}
       - name: Update k8s manifests
         run: |
           git config --global user.name "sobitsingh007"
           git config --global user.email "sobitsingh007@gmail.com"
           git add ./ultimate-devops-project-demo/kubernetes/productcatalog/deploy.yaml
           git commit -m "update image to [CI] ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
-          git push
+          git push HEAD:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
