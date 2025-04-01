@@ -71,6 +71,6 @@ jobs:
           git config --global user.email "sobitsingh007@gmail.com"
           git add ./ultimate-devops-project-demo/kubernetes/productcatalog/deploy.yaml
           git commit -m "update image to [CI] ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
-          git push origin main
+          git push origin HEAD:main
 
           
