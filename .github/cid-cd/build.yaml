@@ -63,6 +63,7 @@ jobs:
         run: |
           sed -i "s|image:.*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}|g" ./ultimate-devops-project-demo/kubernetes/productcatalog/deploy.yaml
       - name: commit and push changes
+        env : ${{ secrets.TOKEN }}
         run: |
           git config --global user.name "sobitsingh007"
           git config --global user.email "sobitsingh007@gmail.com"
