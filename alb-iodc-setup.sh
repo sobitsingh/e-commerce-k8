@@ -1,7 +1,15 @@
 #!/bin/bash
 # This script is to update the kube-config file for the EKS cluster and set up ingress AWS ALB controller
 
-set -e  # Exit immediately if a command exits with a non-zero status
+# Update kube-config
+aws eks --region us-east-1 update-kubeconfig --name open-tele-eks
+cd ./ultimate-devops-project-demo/kubernetes/
+
+# run kubernetes deployment
+kubectl create -f complete-deploy.yaml
+cd frontendproxy
+kubectl create -f ingress.yaml
+cd ..
 
 # Install helm and eksctl
 sudo apt-get update -y
@@ -18,8 +26,6 @@ sudo mv /tmp/eksctl /usr/local/bin
 rm eksctl_Linux_${PLATFORM}.tar.gz
 eksctl version
 
-# Update kube-config
-aws eks --region us-east-1 update-kubeconfig --name open-tele-eks
 
 # Set up ingress AWS ALB controller
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.12.0/docs/install/iam_policy.json
