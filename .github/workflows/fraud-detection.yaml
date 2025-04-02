@@ -47,7 +47,7 @@ jobs:
               run: |
                 cd ultimate-devops-project-demo/src/fraud-detection
                 chmod +x gradlew
-                ./gradlew clean build
+                
 
     docker-build:
         runs-on: ubuntu-latest
