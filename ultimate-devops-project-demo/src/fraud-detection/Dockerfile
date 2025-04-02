@@ -1,4 +1,4 @@
-# check ad
+#ddgdg
 FROM gradle:8-jdk17 AS builder
 
 WORKDIR /usr/src/app/
