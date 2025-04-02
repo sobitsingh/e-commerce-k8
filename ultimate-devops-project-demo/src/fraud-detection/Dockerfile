@@ -10,7 +10,7 @@ RUN gradle shadowJar
 
 FROM gcr.io/distroless/java17-debian11
 
-ARG OTEL_JAVA_AGENT_VERSION
+ARG OTEL_JAVA_AGENT_VERSION=1.25.0
 WORKDIR /usr/src/app/
 
 ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v$OTEL_JAVA_AGENT_VERSION/opentelemetry-javaagent.jar /app/opentelemetry-javaagent.jar
