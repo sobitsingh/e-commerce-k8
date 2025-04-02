@@ -4,7 +4,7 @@ FROM gradle:8-jdk17 AS builder
 WORKDIR /usr/src/app/
 
 COPY . .
-COPY /src/main/proto/pb/ src/main/proto/
+COPY src/main/proto/pb/ src/main/proto/
 RUN gradle shadowJar
 
 # -----------------------------------------------------------------------------
