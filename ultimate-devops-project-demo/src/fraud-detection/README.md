@@ -1,4 +1,4 @@
-# Fraud Detection Service
+# Fraud Detection Service 
 
 This service receives new orders by a Kafka topic and returns cases which are
 suspected of fraud.
