@@ -3,8 +3,7 @@ FROM gradle:8-jdk17 AS builder
 
 WORKDIR /usr/src/app/
 
-COPY ./src/fraud-detection/ ./
-COPY ./pb/ ./src/main/proto/
+COPY . .
 RUN gradle shadowJar
 
 # -----------------------------------------------------------------------------
