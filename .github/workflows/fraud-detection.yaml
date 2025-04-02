@@ -22,6 +22,7 @@ jobs:
               run: |
                 cd ultimate-devops-project-demo/src/fraud-detection
                 cp -r ../../pb/ src/main/proto/
+                chmod 400 gradlew
                 ./gradlew shadowJar
     
     static-code:
