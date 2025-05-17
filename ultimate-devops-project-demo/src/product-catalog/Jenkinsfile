@@ -5,6 +5,9 @@ pipeline{
     }
     environment{
         PRODUCT_CATALOG_PORT=8081
+        SONAR_PROJECT_KEY = "product-cat"
+        SONAR_HOST_URL = "http://18.213.4.185:9000"
+        SONAR_SCANNER_HOME = tool "sonar"
     }
     stages{
         stage("Github"){
@@ -18,6 +21,21 @@ pipeline{
                     cd ultimate-devops-project-demo/src/product-catalog
                     go build -o product-catalog . 
                 """
+            }
+        }
+        stage('Static_code_analysis'){
+            steps{
+                withCredentials([string(credentialsId: 'sonar_token', variable: 'SONAR_TOKEN')]) {
+                    withSonarQubeEnv('sonar'){
+                        sh """
+                            ${SONAR_SCANNER_HOME}/bin/sonar-scanner \ 
+                            -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=${SONAR_HOST_URL} \
+                            -Dsonar.login=${SONAR_TOKEN}
+                        """
+                    }
+                }
             }
         }
     }
