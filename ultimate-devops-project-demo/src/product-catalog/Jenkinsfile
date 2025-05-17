@@ -1,9 +1,23 @@
 pipeline{
     agent any
+    tools{
+        Go: 'go_jenkins'
+    }
+    environment{
+        PRODUCT_CATALOG_PORT=8081
+    }
     stages{
         stage("Github"){
             steps{
                 git branch: 'main', credentialsId: 'jenkins', url : 'https://github.com/sobitsingh/e-commerce-k8.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                sh """
+                    cd ultimate-devops-project-demo/src/product-catalog
+                    go build -o product-catalog . 
+                """
             }
         }
     }
