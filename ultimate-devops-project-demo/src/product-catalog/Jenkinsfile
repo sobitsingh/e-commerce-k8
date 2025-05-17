@@ -1,9 +1,9 @@
 pipeline{
     agent any
     stages{
-        stage("Checkout"){
+        stage("Github"){
             steps{
-                echo "yes connect"
+                git branch: 'main', credentials: 'jenkins', url : 'https://github.com/sobitsingh/e-commerce-k8.git'
             }
         }
     }
