@@ -1,0 +1,10 @@
+pipeline{
+    agents any
+    stages{
+        stage("Checkout"){
+            steps{
+                echo "yes connect"
+            }
+        }
+    }
+}
