@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        go: 'go_jenkins'
+        go 'go_jenkins'
     }
     environment{
         PRODUCT_CATALOG_PORT=8081
