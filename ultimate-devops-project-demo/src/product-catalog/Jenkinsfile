@@ -60,7 +60,7 @@ pipeline{
         stage('ECR Push'){
             steps{
                 script{
-                    docker.image("prod-catalog-${ECR_REGISTRY}/${ECR_REPO}:${BUILD_ID}").push
+                    docker.image("prod-catalog-${ECR_REGISTRY}/${ECR_REPO}:${BUILD_ID}").push()
                 }
             }
         }
