@@ -8,6 +8,8 @@ pipeline{
         SONAR_PROJECT_KEY = "product-cat"
         SONAR_HOST_URL = "http://18.213.4.185:9000"
         SONAR_SCANNER_HOME = tool "sonar"
+        ECR_REGISTRY = ""
+        ECR_REPO = ""
     }
     stages{
         stage("Github"){
@@ -35,6 +37,30 @@ pipeline{
                             -Dsonar.login=${SONAR_TOKEN}
                         """
                     }
+                }
+            }
+        }
+        stage("Docker"){
+            steps{
+                script{
+                    docker.build("prod-catalog-${ECR_REGISTRY}/${ECR_REPO}:${BUILD_ID}")
+                }
+            }
+        }
+        stage('Trivy Scan'){
+            steps{
+                sh "trivy --severiry CRITICAL,HIGH --no-progress --format trivy_results.txt --image product-catalog: ${BUILD.ID}"
+            }
+        }
+        stage('ECR login'){
+            steps{
+                sh "aws ecr get-login-password --region us-west-1"
+            }
+        }
+        stage('ECR Push'){
+            steps{
+                script{
+                    docker.image("prod-catalog-${ECR_REGISTRY}/${ECR_REPO}:${BUILD_ID}").push
                 }
             }
         }
