@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Github"){
             steps{
-                git branch: 'main', credentials: 'jenkins', url : 'https://github.com/sobitsingh/e-commerce-k8.git'
+                git branch: 'main', credentialsId: 'jenkins', url : 'https://github.com/sobitsingh/e-commerce-k8.git'
             }
         }
     }
