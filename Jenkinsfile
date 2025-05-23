@@ -1,6 +1,5 @@
 pipeline{
     agent any
-    parameters{}
     environment{
         AWS_REGION = 'us-east-1'
         CLUSTER_NAME = 'open-tele-eks'
