@@ -5,14 +5,6 @@ pipeline{
         CLUSTER_NAME = 'open-tele-eks'
     }
     stages{
-        stage("Git checkout"){
-            steps{
-                script{
-                    echo "Git checkout"
-                    sh "git clone https://github.com/sobitsingh/e-commerce-k8.git"
-                }
-            }
-        }
          stage('Configure Kubeconfig') {
             steps {script {
                     sh '''
