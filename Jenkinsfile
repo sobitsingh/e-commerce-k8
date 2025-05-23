@@ -14,8 +14,7 @@ pipeline{
             }
         }
          stage('Configure Kubeconfig') {
-            steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
+            steps {withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
                                   credentialsId: 'aws-credentials-id']]) {
                     sh '''
                         aws eks update-kubeconfig \
@@ -24,6 +23,7 @@ pipeline{
                     '''
                 }
             }
+         }
         stage('eks-deploy'){
             steps{
                 script{
@@ -36,5 +36,4 @@ pipeline{
             }
         }
     }
-}
 }
