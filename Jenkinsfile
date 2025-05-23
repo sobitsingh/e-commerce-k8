@@ -14,8 +14,7 @@ pipeline{
             }
         }
          stage('Configure Kubeconfig') {
-            steps {withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
-                                  credentialsId: 'aws-credentials-id']]) {
+            steps {script {
                     sh '''
                         aws eks update-kubeconfig \
                             --region $AWS_REGION \
