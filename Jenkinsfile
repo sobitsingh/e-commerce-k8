@@ -23,6 +23,7 @@ pipeline {
 
         stage('eks-deploy') {
             steps {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws']]){
                 script {
                     echo "Deploying to EKS"
                     sh '''
@@ -30,6 +31,7 @@ pipeline {
                         kubectl apply -f complete-deploy.yaml
                     '''
                 }
+            }
             }
         }
     }
